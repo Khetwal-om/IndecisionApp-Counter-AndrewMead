@@ -2072,3 +2072,36 @@ class AddOption extends Component{
 export default AddOption;
 
 ```
+
+
+
+# Stateless functional component
+
+
+1. User.js
+
+
+```javascript
+import React from 'react';
+
+
+
+
+
+const User=(props)=>{
+    return(
+        <div>
+
+            <p>Name{props.name}</p>
+            <p>Goals{props.age}</p>
+        </div>
+    );
+};
+
+
+export default User;
+
+```
+
+
+2. 

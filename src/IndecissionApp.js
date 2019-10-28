@@ -7,7 +7,7 @@ import AddOption from "./AddOption";
 import Action from "./Action";
 // import Counter from './Counter';
 // import VisibilityToggle from './VisibilityToggle';
-
+import User from './User';
 
 
 class IndecissionApp extends Component{
@@ -74,6 +74,8 @@ class IndecissionApp extends Component{
                     hasOptions={this.state.options.length>0}
                     handlePick={this.handlePick}
                 />
+
+                <User name={"James"} age={7}/>
             </div>
         );
     }
