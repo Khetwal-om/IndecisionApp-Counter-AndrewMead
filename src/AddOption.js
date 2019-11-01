@@ -12,6 +12,8 @@ class AddOption extends Component{
         this.state={
             error:undefined
         }
+
+
     }
 
 
@@ -21,11 +23,18 @@ class AddOption extends Component{
         const option = e.target.elements.option.value.trim();
         const error = this.props.handleAddOption(option)
 
+        this.setState(()=>({error:error}));
+
         this.setState(()=>{
             return{
                 error:error
             };
         });
+
+
+        if(!error){
+            e.target.elements.option.value='';
+        }
 
     }
 

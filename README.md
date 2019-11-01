@@ -2104,4 +2104,1005 @@ export default User;
 ```
 
 
-2. 
+2. ANother example
+
+```javascript
+import React from 'react';
+import Option from './Option';
+import Button from "reactstrap/es/Button";
+
+
+const Options =(props)=>{
+
+    return (
+        <div>
+
+            <Button onClick={props.handleDeleteOptions}>Remove AlL</Button>
+            {props.options.map((option)=> <Option key={option} optionText={option}/>)}
+        </div>
+    );
+
+
+};
+
+export default Options;
+
+```
+
+
+
+3. *default prop values*
+
+
+  * Changes made in Header
+  
+```javascript
+import React,{Component} from 'react';
+
+
+const Header=(props)=>{
+    return (
+        <div>
+            <h1>{props.title}</h1>
+            <h3>{props.subtitle}</h3>
+        </div>
+    );
+};
+
+Header.defaultProps={
+    'title':'Golazooo '
+};
+
+export default Header
+
+```
+
+
+  * Now we will stop props value being passed from IndecisionApp
+  component  *Header*
+
+    **Before**
+
+```javascript
+        <Header  title={title} subtitle={subtitle}/>
+```
+    **After**
+
+
+```javascript
+        <Header  subtitle={subtitle}/>
+```
+
+
+
+4. Conditional subtitle
+
+
+```javascript
+import React,{Component} from 'react';
+
+
+const Header=(props)=>{
+    return (
+        <div>
+            <h1>{props.title}</h1>
+            {props.subtitle && <h3>{props.subtitle}</h3>}
+        </div>
+    );
+};
+
+Header.defaultProps={
+    'title':'Golazooo '
+};
+
+export default Header
+
+```
+
+
+
+
+5. Remove subtitle from <Header/> ,We will still see the title,
+without subtitle
+
+6. Using the above defaultProps in IndecisionApp
+
+
+
+```javascript
+import React,{Component} from 'react';
+import Header from "./Header";
+import './App.css';
+import Options from "./Options";
+
+import AddOption from "./AddOption";
+import Action from "./Action";
+// import Counter from './Counter';
+// import VisibilityToggle from './VisibilityToggle';
+import User from './User';
+
+
+class IndecissionApp extends Component{
+
+
+    constructor(props){
+        super(props);
+        this.handleDeleteOptions=this.handleDeleteOptions.bind(this);
+        this.handlePick=this.handlePick.bind(this);
+        this.handleAddOption=this.handleAddOption.bind(this);
+        this.state={
+            options:props.options
+    };
+    }
+
+
+    handleDeleteOptions(){
+        this.setState(()=>{
+           return{
+            options:[]
+           };
+        });
+    }
+
+    handlePick(){
+            const randomOption=Math.floor(Math.random=this.state.options.length);
+            const option=this.state.options(randomOption);
+            alert(option);
+    }
+
+    handleAddOption(option){
+
+        if(!option){
+            return 'Enter a name';
+        }
+        else if(this.state.options.indexOf(option)>-1){
+            return 'Already in!';
+        }
+
+        this.setState((prevState)=>{
+           return{
+              options:prevState.options.concat([option])
+           } ;
+        });
+    }
+
+
+
+    render() {
+        const subtitle="Will Give you my all!!!";
+
+        return (
+            <div className="App">
+                <Header  subtitle={subtitle}/>
+                <Options
+                    options={this.state.options}
+                    handleDeleteOptions={this.handleDeleteOptions}
+                />
+                <AddOption
+                    handleAddOption={this.handleAddOption}
+                />
+                <Action
+                    hasOptions={this.state.options.length>0}
+                    handlePick={this.handlePick}
+                />
+
+                <User name={"James"} age={7}/>
+            </div>
+        );
+    }
+}
+
+
+
+IndecissionApp.defaultProps={
+  options: []
+};
+
+
+
+export default IndecissionApp;
+
+```
+
+
+
+7. Repeating the same for Counter.js
+
+
+```javascript
+import React,{Component} from 'react';
+
+class Counter extends Component{
+
+    constructor(props){
+        super(props);
+        this.handleAddOne=this.handleAddOne.bind(this);
+        this.handleMinusOne=this.handleMinusOne.bind(this);
+        this.handleReset=this.handleReset.bind(this);
+
+
+        this.state={
+            count: props.count,
+            clicks:0
+        };
+
+    }
+
+    handleAddOne(){
+        this.setState((prevState)=>{
+            return {
+              count:prevState.count+1,
+              clicks:prevState.clicks+1
+            };
+        });
+    };
+
+    handleMinusOne(){
+        this.setState((prevState)=>{
+            return {
+                count :prevState.count - 1,
+                clicks:prevState.clicks+1
+        };
+        });
+        console.log("this is from handleMinusOne");
+    };
+    handleReset(){
+        this.setState((prevState)=>{
+               return{
+                   count:0,
+                   clicks:prevState.clicks+1
+               };
+            }
+        );
+    };
+
+
+    render() {
+
+
+
+        return (
+            <div>
+                <h1>Count:{this.state.count}  </h1>
+                <h5>Clicks:  {this.state.clicks}</h5>
+                <button onClick={this.handleAddOne}>+1</button>
+                <button onClick={this.handleMinusOne}>-1</button>
+                <button onClick={this.handleReset}>reset</button>
+
+            </div>
+        );
+    }
+}
+
+Counter.defaultProps={
+    count:9
+};
+
+
+export default Counter;
+
+```
+
+
+
+8. Can do this to do the same
+
+```javascript
+ <Counter count={100}/>
+```
+
+
+9. Consider this code
+
+
+```javascript
+
+    handleDeleteOptions(){
+        this.setState(()=>{
+           return{
+            options:[]
+           };
+        });
+    }
+```
+
+
+10. We can simplify this as above function is returning object.
+
+11. const num=()=>{}   **returns function**
+
+12. const num=()=>({}) **returns object**
+
+
+13. Our code **9** gets minimized
+
+```javascript
+
+    handleDeleteOptions(){
+        this.setState(()=>({options: []}));
+    }
+
+```
+
+14. These two are exactly the same
+
+```javascript
+this.setState((prevState)=>{
+   options:prevState.options.concat([option])
+});
+
+   this.setState((prevState)=>{
+           return{
+              options:prevState.options.concat([option])
+           } ;
+        });
+```
+
+
+
+15. In AddOption.js
+
+```javascript
+        
+this.setState(()=>{
+    return{
+                error:error
+            };
+        });
+
+```
+
+
+ *Can be written as
+ 
+ 
+```javascript
+this.setState(()=>({error:error}));
+
+```
+
+
+
+
+### Remove single item
+
+
+
+1. 
+
+
+ *
+     handleDeleteOption(option){
+         console.log('calling',option);
+     }
+
+
+ * this.handleDeleteOption=this.handleDeleteOption.bind(this);
+
+
+ * In options.js
+ 
+```javascript
+import React from 'react';
+import Option from './Option';
+import Button from "reactstrap/es/Button";
+
+
+const Options =(props)=>{
+
+    return (
+        <div>
+
+            <Button onClick={props.handleDeleteOptions}>Remove AlL</Button>
+            {props.options.map((option)=> (
+                <Option 
+                    key={option} 
+                    optionText={option}
+                    handleDeleteOption={props.handleDeleteOption}
+                />
+            ))}
+                
+        </div>
+    );
+
+
+};
+
+export default Options;
+
+```
+
+
+ * In option.js
+ 
+ 
+```javascript
+import React from 'react';
+
+
+
+const Option=(props)=>{
+    return (
+        <div>
+            {props.optionText}
+            <button onClick={props.handleDeleteOption}>remove</button>
+        </div>
+    );
+};
+
+
+
+
+export default Option;
+
+```
+
+ * This will be further breaked down to
+ 
+```javascript
+import React from 'react';
+
+
+
+const Option=(props)=>{
+    return (
+        <div>
+            {props.optionText}
+            <button
+                onClick={(e)=>{
+                    props.handleDeleteOption(props.optionText)
+                }}
+            >
+                remove</button>
+        </div>
+    );
+};
+
+
+
+
+export default Option;
+
+```
+ 
+ * Eventually, this removes everything
+ 
+ 
+```javascript
+    handleDeleteOption(option){
+        this.setState((prevState)=>({
+           options:prevState.options.filter((option)=>{
+               return false;
+           })
+        }));
+
+    }
+
+```
+
+
+  * We want single one to be removed
+  
+```javascript
+
+    handleDeleteOption(optionToRemove){
+        this.setState((prevState)=>({
+           options:prevState.options.filter((option)=>{
+               return optionToRemove!==option;
+           })
+        }));
+
+    }
+```
+
+
+   * Can use the shorthand operation
+   
+```javascript
+this.setState(prevState)=>({
+options: prevState.options.filter((option)=>optionToRemove!==option)
+})
+```
+
+
+
+
+
+
+# Differences between functional and class based  components
+
+---
+
+### Life cycle methods
+
+1. **componentDidMount** works with class based components, 
+they never deal with functional components making the latter
+fast.
+
+
+```javascript
+    componentDidMount() {
+        console.log("componentDidMount");
+    }
+```
+
+
+2. **componentDidUpdate**
+
+```javascript
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("componentDidUpdate");
+    }
+    
+    
+```
+
+
+3. **componentDidUnmount** is rarely used
+
+```javascript
+
+    componentWillUnmount() {
+        console.log("componentWillUnmout");
+    }
+```
+
+
+
+
+## Making the data to persist
+
+---
+
+1. Using localStorage.setItem('name','james');
+> this works with string data
+
+ Using localStorage.getItem('name');
+
+
+
+2. Now we will use JSON
+
+  *  JSON.stringify takes regular js object convert it to string.
+  
+  
+  *  JSON.parse takes string representation and returns
+  js object
+
+
+
+3. Within IndecisionApp.js file
+
+```javascript
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
+        if(prevState.options.length!==this.state.options.length){
+            console.log('saving data');
+
+            const json=JSON.stringify(this.state.options);
+            localStorage.setItem('options',json);
+        }
+    }
+```
+
+
+
+
+5. Wow
+
+```javascript
+    componentDidMount() {
+        const json=localStorage.getItem('options');
+        const options=JSON.parse(json);
+        this.setState(()=>({options:options}));
+
+        console.log("componentDidMount");
+    }
+
+
+```
+
+
+6. Invalid data
+
+
+```javascript
+    componentDidMount() {
+        const json=localStorage.getItem('options');
+        const options=JSON.parse(json);
+
+        if(options){
+            this.setState(()=>({options:options}));
+        }
+
+```
+
+
+7. Again for bad data
+
+```javascript
+    componentDidMount() {
+
+        try {
+            const json=localStorage.getItem('options');
+            const options=JSON.parse(json);
+            if(options){
+                this.setState(()=>({options:options}));
+            }
+
+        }catch (e) {
+            //Do nothing
+
+        }
+
+```
+
+
+
+8. ALl edge cases are handled
+
+```javascript
+import React,{Component} from 'react';
+import Header from "./Header";
+import './App.css';
+import Options from "./Options";
+
+import AddOption from "./AddOption";
+import Action from "./Action";
+import Counter from './Counter';
+// import VisibilityToggle from './VisibilityToggle';
+import User from './User';
+
+
+class IndecissionApp extends Component{
+
+
+    constructor(props){
+        super(props);
+        this.handleDeleteOptions=this.handleDeleteOptions.bind(this);
+        this.handleDeleteOption=this.handleDeleteOption.bind(this);
+        this.handlePick=this.handlePick.bind(this);
+        this.handleAddOption=this.handleAddOption.bind(this);
+
+        this.state={
+            options:props.options
+    };
+    }
+
+    componentDidMount() {
+
+        try {
+            const json=localStorage.getItem('options');
+            const options=JSON.parse(json);
+            if(options){
+                this.setState(()=>({options:options}));
+            }
+
+        }catch (e) {
+            //Do nothing
+
+        }
+
+
+
+
+        console.log("componentDidMount");
+    }
+
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
+        if(prevState.options.length!==this.state.options.length){
+            console.log('saving data');
+
+            const json=JSON.stringify(this.state.options);
+            localStorage.setItem('options',json);
+        }
+    }
+
+    componentWillUnmount() {
+        console.log("componentWillUnmout");
+    }
+
+
+    handleDeleteOptions(){
+        this.setState(()=>({options: []}));
+    }
+
+    handleDeleteOption(optionToRemove){
+        this.setState((prevState)=>({
+           options:prevState.options.filter((option)=>{
+               return optionToRemove!==option;
+           })
+        }));
+
+    }
+
+
+
+
+
+    handlePick(){
+            const randomOption=Math.floor(Math.random=this.state.options.length);
+            const option=this.state.options(randomOption);
+            alert(option);
+    }
+
+    handleAddOption(option){
+
+        if(!option){
+            return 'Enter a name';
+        }
+        else if(this.state.options.indexOf(option)>-1){
+            return 'Already in!';
+        }
+
+        // this.setState((prevState)=>{
+        //     options:prevState.options.concat([option])
+        // });
+
+        this.setState((prevState)=>{
+           return{
+              options:prevState.options.concat([option])
+           } ;
+        });
+
+
+
+    }
+
+
+
+    render() {
+        const subtitle="Will Give you my all!!!";
+
+        return (
+            <div className="App">
+                <Header  subtitle={subtitle}/>
+                <Options
+                    options={this.state.options}
+                    handleDeleteOptions={this.handleDeleteOptions}
+                    handleDeleteOption={this.handleDeleteOption}
+                />
+                <AddOption
+                    handleAddOption={this.handleAddOption}
+                />
+                <Action
+                    hasOptions={this.state.options.length>0}
+                    handlePick={this.handlePick}
+                />
+                <Counter count={100}/>
+
+                <User name={"James"} age={7}/>
+            </div>
+        );
+    }
+}
+
+
+
+IndecissionApp.defaultProps={
+  options: []
+};
+
+
+
+export default IndecissionApp;
+
+```
+
+
+---
+
+
+9.  In AddOption.js
+
+```javascript
+    handleAddOption(e) {
+        e.preventDefault();
+
+        const option = e.target.elements.option.value.trim();
+        const error = this.props.handleAddOption(option)
+
+        this.setState(()=>({error:error}));
+
+        this.setState(()=>{
+            return{
+                error:error
+            };
+        });
+
+
+        if(!error){
+            e.target.elements.option.value='';
+        }
+
+    }
+
+
+```
+
+
+10. If empty array just print something
+ 
+ **Before**
+
+```javascript
+import React from 'react';
+import Option from './Option';
+import Button from "reactstrap/es/Button";
+
+
+const Options =(props)=>{
+
+    return (
+        <div>
+
+            <Button onClick={props.handleDeleteOptions}>Remove AlL</Button>
+            {props.options.map((option)=> (
+                <Option
+                    key={option}
+                    optionText={option}
+                    handleDeleteOption={props.handleDeleteOption}
+                />
+            ))}
+
+        </div>
+    );
+
+
+};
+
+export default Options;
+
+```
+
+ **After**
+ 
+ 
+```javascript
+       <div>
+
+            <Button onClick={props.handleDeleteOptions}>Remove AlL</Button>
+
+            {props.options.length===0 && <p>Please enter something</p>}
+
+            {props.options.map((option)=> (
+                <Option
+                    key={option}
+                    optionText={option}
+                    handleDeleteOption={props.handleDeleteOption}
+                />
+            ))}
+
+        </div>
+ 
+```
+
+
+
+### LocalStorage and lifecycle with Counter.js file
+---
+
+1. Within our Counter.js we have a number not a string
+so we don't necessarily have to use JSON.stringify method.
+
+
+2. **parseInt()** method converts string to number.
+
+```javascript
+3*"abc"
+NaN
+isNaN(4*3)
+false
+isNan(4*sfdkj)
+VM597:1 Uncaught ReferenceError: isNan is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM597:1
+isNaN(4*3)
+false
+isNaN(4*sfdkj)
+VM641:1 Uncaught ReferenceError: sfdkj is not defined
+    at <anonymous>:1:9
+(anonymous) @ VM641:1
+isNaN(4*"sfdkj")
+true
+```
+
+
+
+
+3. Now we aren't going to use props so set the options:[]
+array empty and remove default props.   We will do the 
+exact same thing for counter example.
+
+> Every props passed will be overriden
+
+
+
+```javascript
+
+this.setState(){
+    options:[]
+}
+
+
+
+IndecissionApp.defaultProps={
+  options: []
+};
+```
+
+
+
+4. 
+
+ * Step 1: is save the count when it changes
+ Use componentDidUpdate()
+ 
+ 
+```javascript
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevState.count!==this.state.count){
+            localStorage.setItem('count',this.state.count);
+        }
+
+
+
+        console.log('compooooi');
+
+    }
+
+```
+ 
+ 
+ * Step 2: grab that within componentDidMount
+ 
+ 
+```javascript
+
+
+    componentDidMount() {
+        const stringCount=localStorage.getItem('count');
+        const count=parseInt(stringCount,10);
+
+        if(!isNaN(count)){
+            this.setState(()=>({count}));
+        }
+
+    }
+
+```
+
+
+
+---
+
+
+
+
+# WebPack
+
+---
+
+1. **Source map with webpack**
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+---

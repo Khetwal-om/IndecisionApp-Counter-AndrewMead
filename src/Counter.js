@@ -16,6 +16,28 @@ class Counter extends Component{
 
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevState.count!==this.state.count){
+            localStorage.setItem('count',this.state.count);
+        }
+
+
+
+        console.log('compooooi');
+
+    }
+
+    componentDidMount() {
+        const stringCount=localStorage.getItem('count');
+        const count=parseInt(stringCount,10);
+
+        if(!isNaN(count)){
+            this.setState(()=>({count}));
+        }
+
+    }
+
+
     handleAddOne(){
         this.setState((prevState)=>{
             return {
@@ -61,6 +83,7 @@ class Counter extends Component{
         );
     }
 }
+
 
 
 export default Counter;
