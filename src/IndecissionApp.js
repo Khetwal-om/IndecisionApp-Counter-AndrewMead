@@ -9,23 +9,71 @@ import Counter from './Counter';
 // import VisibilityToggle from './VisibilityToggle';
 import User from './User';
 
+import OptionModal from './OptionModal';
+
 
 class IndecissionApp extends Component{
 
 
-    constructor(props){
-        super(props);
-        this.handleDeleteOptions=this.handleDeleteOptions.bind(this);
-        this.handleDeleteOption=this.handleDeleteOption.bind(this);
-        this.handlePick=this.handlePick.bind(this);
-        this.handleAddOption=this.handleAddOption.bind(this);
-
-        this.state={
-            options:[]
+    state={
+        options:[],
+        selectedOption: undefined
     };
-    }
 
-    componentDidMount() {
+    handleDeleteOptions=()=>{
+        this.setState(()=>({options: []}));
+    };
+
+    handleDeleteOption=(optionToRemove)=>{
+        this.setState((prevState)=>({
+            options:prevState.options.filter((option)=>{
+                return optionToRemove!==option;
+            })
+        }));
+
+    };
+
+    handlePick=()=>{
+        const randomNum=Math.floor(Math.random() *this.state.options.length);
+        const option=this.state.options[randomNum];
+
+        this.setState(()=>({
+           selectedOption: option
+        }));
+
+    };
+
+
+
+    handleClearSelectedOption=()=>{
+        this.setState(()=>({
+            selectedOption:undefined
+        }));
+    };
+
+
+
+    handleAddOption=(option)=> {
+
+        if (!option) {
+            return 'Enter a name';
+        } else if (this.state.options.indexOf(option) > -1) {
+            return 'Already in!';
+        }
+
+        // this.setState((prevState)=>{
+        //     options:prevState.options.concat([option])
+        // });
+
+        this.setState((prevState) => {
+            return {
+                options: prevState.options.concat([option])
+            };
+        });
+    };
+
+
+        componentDidMount() {
 
         try {
             const json=localStorage.getItem('options');
@@ -38,11 +86,7 @@ class IndecissionApp extends Component{
             //Do nothing
 
         }
-
-
-
-
-        console.log("componentDidMount");
+            console.log("componentDidMount");
     }
 
 
@@ -59,54 +103,6 @@ class IndecissionApp extends Component{
     componentWillUnmount() {
         console.log("componentWillUnmout");
     }
-
-
-    handleDeleteOptions(){
-        this.setState(()=>({options: []}));
-    }
-
-    handleDeleteOption(optionToRemove){
-        this.setState((prevState)=>({
-           options:prevState.options.filter((option)=>{
-               return optionToRemove!==option;
-           })
-        }));
-
-    }
-
-
-
-
-
-    handlePick(){
-            const randomOption=Math.floor(Math.random=this.state.options.length);
-            const option=this.state.options(randomOption);
-            alert(option);
-    }
-
-    handleAddOption(option){
-
-        if(!option){
-            return 'Enter a name';
-        }
-        else if(this.state.options.indexOf(option)>-1){
-            return 'Already in!';
-        }
-
-        // this.setState((prevState)=>{
-        //     options:prevState.options.concat([option])
-        // });
-
-        this.setState((prevState)=>{
-           return{
-              options:prevState.options.concat([option])
-           } ;
-        });
-
-
-
-    }
-
 
 
     render() {
@@ -130,6 +126,10 @@ class IndecissionApp extends Component{
                 <Counter count={100}/>
 
                 <User name={"James"} age={7}/>
+
+                <OptionModal selectedOption={this.state.selectedOption}
+                 handleClearSelectedOption={this.handleClearSelectedOption}
+                />
             </div>
         );
     }

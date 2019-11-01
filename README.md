@@ -3087,7 +3087,294 @@ IndecissionApp.defaultProps={
 
 ---
 
-1. **Source map with webpack**
+
+
+
+---
+
+
+
+
+# Using latest class properties
+
+
+---
+
+1. Removing the this binding
+
+```javascript
+
+class AddOption extends Component{
+
+    state ={
+        error: undefined
+    };
+
+
+    handleAddOption=(e)=> {
+        e.preventDefault();
+
+        const option = e.target.elements.option.value.trim();
+        const error = this.props.handleAddOption(option)
+
+        this.setState(()=>({error:error}));
+
+        this.setState(()=>{
+            return{
+                error:error
+            };
+        });
+
+
+        if(!error){
+            e.target.elements.option.value='';
+        }
+
+    }
+
+
+    render() {
+        return(
+            <div>
+                {this.state.error && <p>{this.state.error}</p>}
+                <form onSubmit={this.handleAddOption}>
+                <input type={"text"} name={"option"}/>
+                <Button >Add Option</Button>
+                </form>
+            </div>
+        );
+    }
+}
+
+export default AddOption;
+
+```
+
+
+
+
+2.
+
+  * Pull state out of constructor
+  * convert all event handlers to class properties (arrow functions)
+  * remove constructor
+
+
+
+
+
+---
+
+
+1. Remove this from indecisionapp
+
+```javascript
+    constructor(props){
+        super(props);
+        this.handleDeleteOptions=this.handleDeleteOptions.bind(this);
+        this.handleDeleteOption=this.handleDeleteOption.bind(this);
+        this.handlePick=this.handlePick.bind(this);
+        this.handleAddOption=this.handleAddOption.bind(this);
+
+    }
+
+```
+
+
+2. edit indecisionapp
+
+```javascript
+import React,{Component} from 'react';
+import Header from "./Header";
+import './App.css';
+import Options from "./Options";
+
+import AddOption from "./AddOption";
+import Action from "./Action";
+import Counter from './Counter';
+// import VisibilityToggle from './VisibilityToggle';
+import User from './User';
+
+
+class IndecissionApp extends Component{
+
+
+    state={
+        options:[]
+    };
+
+    handleDeleteOptions=()=>{
+        this.setState(()=>({options: []}));
+    };
+
+    handleDeleteOption=(optionToRemove)=>{
+        this.setState((prevState)=>({
+            options:prevState.options.filter((option)=>{
+                return optionToRemove!==option;
+            })
+        }));
+
+    };
+
+    handlePick=()=>{
+        const randomOption=Math.floor(Math.random=this.state.options.length);
+        const option=this.state.options(randomOption);
+        alert(option);
+    };
+
+    handleAddOption=(option)=> {
+
+        if (!option) {
+            return 'Enter a name';
+        } else if (this.state.options.indexOf(option) > -1) {
+            return 'Already in!';
+        }
+
+        // this.setState((prevState)=>{
+        //     options:prevState.options.concat([option])
+        // });
+
+        this.setState((prevState) => {
+            return {
+                options: prevState.options.concat([option])
+            };
+        });
+    };
+
+
+        componentDidMount() {
+
+        try {
+            const json=localStorage.getItem('options');
+            const options=JSON.parse(json);
+            if(options){
+                this.setState(()=>({options:options}));
+            }
+
+        }catch (e) {
+            //Do nothing
+
+        }
+            console.log("componentDidMount");
+    }
+
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
+        if(prevState.options.length!==this.state.options.length){
+            console.log('saving data');
+
+            const json=JSON.stringify(this.state.options);
+            localStorage.setItem('options',json);
+        }
+    }
+
+    componentWillUnmount() {
+        console.log("componentWillUnmout");
+    }
+
+
+    render() {
+        const subtitle="Will Give you my all!!!";
+
+        return (
+            <div className="App">
+                <Header  subtitle={subtitle}/>
+                <Options
+                    options={this.state.options}
+                    handleDeleteOptions={this.handleDeleteOptions}
+                    handleDeleteOption={this.handleDeleteOption}
+                />
+                <AddOption
+                    handleAddOption={this.handleAddOption}
+                />
+                <Action
+                    hasOptions={this.state.options.length>0}
+                    handlePick={this.handlePick}
+                />
+                <Counter count={100}/>
+
+                <User name={"James"} age={7}/>
+            </div>
+        );
+    }
+}
+
+
+
+
+
+
+export default IndecissionApp;
+
+```
+
+
+
+
+# Passing children to component
+
+---
+
+
+1. Approach one
+
+```javascript
+
+
+const Layout=(props)=>{
+    return(
+        <div>
+            <p>header</p>
+                {props.content}
+            <p>Footer...</p>
+        </div>
+    );
+};
+
+const template={
+    <div>
+        <h1>Page Title</h1>
+        <p>This is my page</p>
+    </div>
+}
+
+ReactDOM.render(<Layout content={template}/>,document.getElementById('App'))
+
+```
+
+---
+
+
+
+2. Approach two
+
+```javascript
+
+
+
+const Layout=(props)=>{
+    return(
+        <div>
+            <p>header</p>
+                {props.content}
+            <p>Footer...</p>
+        </div>
+    );
+};
+
+
+
+ReactDOM.render((
+    <Layout>
+        <div>
+            <h1>Page Title</h1>
+            <p>This is my page</p>
+        </div>
+    </Layout>
+),document.getElementById('App'));
+
+```
 
 
 
@@ -3096,13 +3383,241 @@ IndecissionApp.defaultProps={
 
 
 
+### Random option problem is fixed 
+
+
+```javascript
+    handlePick=()=>{
+        const randomNum=Math.floor(Math.random() *this.state.options.length);
+        const option=this.state.options[randomNum];
+
+        this.setState(()=>({
+           selectedOption: option
+        }));
+
+    };
+
+
+```
+
+
+
+
+1. Modal
+
+
+```javascript
+import Button from "reactstrap/es/Button";
+import React from "react";
+
+
+const Action = (props)=>{
+    return(
+        <div>
+            <h3>from Action</h3>
+            <Button
+                onClick={props.handlePick}
+                disabled={!props.hasOptions}>
+                What to do?
+            </Button>
+        </div>
+    );
+
+};
+
+
+export default Action;
+
+```
+
+2. 
+
+import React,{Component} from 'react';
+import Header from "./Header";
+import './App.css';
+import Options from "./Options";
+
+import AddOption from "./AddOption";
+import Action from "./Action";
+import Counter from './Counter';
+// import VisibilityToggle from './VisibilityToggle';
+import User from './User';
+
+import OptionModal from './OptionModal';
+
+
+class IndecissionApp extends Component{
+
+
+    state={
+        options:[],
+        selectedOption: undefined
+    };
+
+    handleDeleteOptions=()=>{
+        this.setState(()=>({options: []}));
+    };
+
+    handleDeleteOption=(optionToRemove)=>{
+        this.setState((prevState)=>({
+            options:prevState.options.filter((option)=>{
+                return optionToRemove!==option;
+            })
+        }));
+
+    };
+
+    handlePick=()=>{
+        const randomNum=Math.floor(Math.random() *this.state.options.length);
+        const option=this.state.options[randomNum];
+
+        this.setState(()=>({
+           selectedOption: option
+        }));
+
+    };
+
+
+
+    handleClearSelectedOption=()=>{
+        this.setState(()=>({
+            selectedOption:undefined
+        }));
+    };
+
+
+
+    handleAddOption=(option)=> {
+
+        if (!option) {
+            return 'Enter a name';
+        } else if (this.state.options.indexOf(option) > -1) {
+            return 'Already in!';
+        }
+
+        // this.setState((prevState)=>{
+        //     options:prevState.options.concat([option])
+        // });
+
+        this.setState((prevState) => {
+            return {
+                options: prevState.options.concat([option])
+            };
+        });
+    };
+
+
+        componentDidMount() {
+
+        try {
+            const json=localStorage.getItem('options');
+            const options=JSON.parse(json);
+            if(options){
+                this.setState(()=>({options:options}));
+            }
+
+        }catch (e) {
+            //Do nothing
+
+        }
+            console.log("componentDidMount");
+    }
+
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
+        if(prevState.options.length!==this.state.options.length){
+            console.log('saving data');
+
+            const json=JSON.stringify(this.state.options);
+            localStorage.setItem('options',json);
+        }
+    }
+
+    componentWillUnmount() {
+        console.log("componentWillUnmout");
+    }
+
+
+    render() {
+        const subtitle="Will Give you my all!!!";
+
+        return (
+            <div className="App">
+                <Header  subtitle={subtitle}/>
+                <Options
+                    options={this.state.options}
+                    handleDeleteOptions={this.handleDeleteOptions}
+                    handleDeleteOption={this.handleDeleteOption}
+                />
+                <AddOption
+                    handleAddOption={this.handleAddOption}
+                />
+                <Action
+                    hasOptions={this.state.options.length>0}
+                    handlePick={this.handlePick}
+                />
+                <Counter count={100}/>
+
+                <User name={"James"} age={7}/>
+
+                <OptionModal selectedOption={this.state.selectedOption}
+                 handleClearSelectedOption={this.handleClearSelectedOption}
+                />
+            </div>
+        );
+    }
+}
 
 
 
 
 
 
+export default IndecissionApp;
 
 
 
----
+
+3. Wow this is beautiful
+
+
+```javascript
+         onRequestClose={props.handleClearSelectedOption}
+ 
+```
+
+
+  **which is**
+  
+```javascript
+import React from 'react';
+import Modal from 'react-modal';
+
+
+const OptionModal=(props)=>{
+
+    return(
+        <Modal
+          isOpen={!!props.selectedOption}
+          onRequestClose={props.handleClearSelectedOption}
+          contentLabel={"selected option"}
+        >
+            <h3>yup</h3>
+
+            {props.selectedOption && <p>{props.selectedOption}</p>}
+
+            <button onClick={props.handleClearSelectedOption}>Okies</button>
+        </Modal>
+
+    )
+};
+
+
+export default OptionModal;
+
+```
+
+
+
+

@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="563144e0-3c59-4fe8-916b-b9a61f07525a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/OptionModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AddOption.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddOption.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Counter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/IndecissionApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/IndecissionApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Option.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Option.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Options.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Options.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,10 +33,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/IndecissionApp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2620">
-              <caret line="138" selection-start-line="138" selection-end-line="138" />
+            <state relative-caret-position="600">
+              <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
+                <element signature="e#279#305#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Action.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="340">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -77,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AddOption.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="980">
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -89,17 +88,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Options.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
+        <entry file="file://$PROJECT_DIR$/src/OptionModal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+            <state relative-caret-position="214">
+              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,29 +110,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="184">
-                <caret line="3091" selection-start-line="3091" selection-end-line="3091" />
-                <folding>
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#42#0" expanded="true" />
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#42#0" expanded="true" />
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#42#0" expanded="true" />
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#26#0" expanded="true" />
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#26#0" expanded="true" />
-                  <element signature="e#0#38#0" expanded="true" />
-                  <element signature="e#0#26#0" expanded="true" />
-                </folding>
+              <first_editor relative-caret-position="512">
+                <caret line="3617" selection-start-line="3617" selection-end-line="3617" />
               </first_editor>
               <second_editor />
             </state>
@@ -158,14 +139,15 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/VisibilityToggle.js" />
         <option value="$PROJECT_DIR$/src/User.js" />
-        <option value="$PROJECT_DIR$/src/Action.js" />
         <option value="$PROJECT_DIR$/src/Header.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/Option.js" />
-        <option value="$PROJECT_DIR$/src/AddOption.js" />
         <option value="$PROJECT_DIR$/src/Options.js" />
-        <option value="$PROJECT_DIR$/src/IndecissionApp.js" />
         <option value="$PROJECT_DIR$/src/Counter.js" />
+        <option value="$PROJECT_DIR$/src/AddOption.js" />
+        <option value="$PROJECT_DIR$/src/IndecissionApp.js" />
+        <option value="$PROJECT_DIR$/src/Action.js" />
+        <option value="$PROJECT_DIR$/src/OptionModal.js" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -181,7 +163,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -192,17 +173,13 @@
             <path>
               <item name="four" type="b2602c69:ProjectViewProjectNode" />
               <item name="four" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="four" type="b2602c69:ProjectViewProjectNode" />
-              <item name="four" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -293,17 +270,21 @@
       <workItem from="1572568719813" duration="1382000" />
       <workItem from="1572580480279" duration="596000" />
       <workItem from="1572589464409" duration="1295000" />
+      <workItem from="1572594968697" duration="1782000" />
+      <workItem from="1572596805349" duration="118000" />
+      <workItem from="1572596948010" duration="1639000" />
+      <workItem from="1572598655199" duration="1383000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56918000" />
+    <option name="totallyTimeSpent" value="61840000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="697" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24430956" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24430956" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -314,7 +295,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.5116279" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.41362128" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -399,20 +380,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/idea.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/User.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IndecissionApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2620">
-          <caret line="138" selection-start-line="138" selection-end-line="138" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -430,20 +415,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Action.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AddOption.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="980">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
@@ -452,44 +427,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Options.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/src/Action.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        <state relative-caret-position="340">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IndecissionApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#279#305#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OptionModal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="184">
-            <caret line="3091" selection-start-line="3091" selection-end-line="3091" />
-            <folding>
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#42#0" expanded="true" />
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#42#0" expanded="true" />
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#42#0" expanded="true" />
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#26#0" expanded="true" />
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#26#0" expanded="true" />
-              <element signature="e#0#38#0" expanded="true" />
-              <element signature="e#0#26#0" expanded="true" />
-            </folding>
+          <first_editor relative-caret-position="512">
+            <caret line="3617" selection-start-line="3617" selection-end-line="3617" />
           </first_editor>
           <second_editor />
         </state>
