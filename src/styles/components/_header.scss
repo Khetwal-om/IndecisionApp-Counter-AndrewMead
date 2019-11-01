@@ -1,0 +1,22 @@
+.header{
+  background: $off-black;
+  color: azure;
+  margin-bottom: $four-point-eight;  //48pixel
+  padding: $one-point-six 0;
+}
+
+
+// BEM naming convention block element modifier
+
+.header__title{
+  font-size:$three-point-three;
+  margin: 0;
+}
+
+
+.header__subtitle{
+  color: $off-white;
+  font-size:$one-point-six;
+  font-weight: 500;
+  margin: 0;
+}

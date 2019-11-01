@@ -30,16 +30,15 @@ class AddOption extends Component{
             e.target.elements.option.value='';
         }
 
-    }
-
+    };
 
     render() {
         return(
             <div>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.handleAddOption}>
-                <input type={"text"} name={"option"}/>
-                <Button >Add Option</Button>
+                {this.state.error && <p className={"add-option-error"}>{this.state.error}</p>}
+                <form className={"add-option"} onSubmit={this.handleAddOption}>
+                <input className={"add-option__input"} type={"text"} name={"option"}/>
+                <Button className={"button"}>Add Option</Button>
                 </form>
             </div>
         );

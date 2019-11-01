@@ -1,0 +1,23 @@
+//rem   1em = 16px
+
+
+
+html{
+  font-size: 62.5%;
+}
+
+
+body{
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size:1.7rem;
+  background: $dark-blue;
+
+}
+
+button{
+  cursor: pointer;
+}
+
+button:disabled{
+  cursor: default;
+}

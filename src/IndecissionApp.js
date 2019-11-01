@@ -1,7 +1,11 @@
 import React,{Component} from 'react';
 import Header from "./Header";
+import 'normalize.css/normalize.css';
 import './App.css';
 import Options from "./Options";
+import './styles/stylr.scss';
+
+
 
 import AddOption from "./AddOption";
 import Action from "./Action";
@@ -109,27 +113,35 @@ class IndecissionApp extends Component{
         const subtitle="Will Give you my all!!!";
 
         return (
-            <div className="App">
+            <div>
                 <Header  subtitle={subtitle}/>
-                <Options
-                    options={this.state.options}
-                    handleDeleteOptions={this.handleDeleteOptions}
-                    handleDeleteOption={this.handleDeleteOption}
-                />
-                <AddOption
-                    handleAddOption={this.handleAddOption}
-                />
-                <Action
-                    hasOptions={this.state.options.length>0}
-                    handlePick={this.handlePick}
-                />
-                <Counter count={100}/>
+                <div className={"container"}>
 
-                <User name={"James"} age={7}/>
+
+                    <Action
+                        hasOptions={this.state.options.length>0}
+                        handlePick={this.handlePick}
+                    />
+
+                <div className={"widget"}>
+                    <Options
+                        options={this.state.options}
+                        handleDeleteOptions={this.handleDeleteOptions}
+                        handleDeleteOption={this.handleDeleteOption}
+                    />
+                    <AddOption
+                        handleAddOption={this.handleAddOption}
+                    />
+                </div>
+
+                {/*<Counter count={100}/>*/}
+
+                {/*<User name={"James"} age={7}/>*/}
 
                 <OptionModal selectedOption={this.state.selectedOption}
                  handleClearSelectedOption={this.handleClearSelectedOption}
                 />
+                </div>
             </div>
         );
     }
